@@ -3,22 +3,14 @@
  */
 package com.dev.hospital.management.bean;
 
-import java.util.Date;
-
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import java.sql.Date;
 
 /**
  * @author dayanlazare
  *
  */
-@MappedSuperclass
 public abstract class Person {
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	protected Long personId;
 	
 	protected String firstname;
@@ -27,10 +19,15 @@ public abstract class Person {
 	protected String email;
 	protected String mobileNumber;
 	
-	public Person(String firstname, String lastname, Date dateOfBirth) {
+	public Person(
+			String firstname, 
+			String lastname,  
+			String email, 
+			Date dateOfBirth) {
 		super();
 		this.firstname = firstname;
-		this.lastname = lastname;
+		this.lastname = lastname; 
+		this.email = email;
 		this.dateOfBirth = dateOfBirth;
 	}
 

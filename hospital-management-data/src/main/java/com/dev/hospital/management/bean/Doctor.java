@@ -3,40 +3,39 @@
  */
 package com.dev.hospital.management.bean;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
-
-import javax.persistence.Entity;
-import javax.persistence.Table;
 
 /**
  * @author dayanlazare
  *
  */
-@Entity
-@Table(name = "Doctor")
 public class Doctor extends Person {
 	
-	private Set<String> specialties = new HashSet<String>();
+	private Set<Specialty> specialties = new HashSet<Specialty>();
 	
 	private Set<Patient> Patients = new HashSet<Patient>();
 	
 	private String pagerNumber;
 
-	public Doctor(String firstname, String lastname, Date dateOfBirth) {
-		super(firstname, lastname, dateOfBirth);
+	public Doctor(
+			String firstname, 
+			String lastname, 
+			String email, 
+			Date dateOfBirth) {
+		super(firstname, lastname, email, dateOfBirth);
 	}
 
-	public Set<String> getSpecialties() {
+	public Set<Specialty> getSpecialties() {
 		return specialties;
 	}
 
-	public void setSpecialties(Set<String> specialties) {
+	public void setSpecialties(Set<Specialty> specialties) {
 		this.specialties = specialties;
 	}
 
-	public void addSpecialty(String specialty) {
+	public void addSpecialty(Specialty specialty) {
 		this.specialties.add(specialty);
 	}
 	
@@ -58,6 +57,13 @@ public class Doctor extends Person {
 
 	public void setPagerNumber(String pagerNumber) {
 		this.pagerNumber = pagerNumber;
+	}
+
+	@Override
+	public String toString() {
+		return "Doctor [specialties=" + specialties + ", Patients=" + Patients + ", pagerNumber=" + pagerNumber
+				+ ", personId=" + personId + ", firstname=" + firstname + ", lastname=" + lastname + ", dateOfBirth="
+				+ dateOfBirth + ", email=" + email + ", mobileNumber=" + mobileNumber + "]";
 	}
 	
 }

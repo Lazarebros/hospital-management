@@ -48,4 +48,16 @@ public class DateUtil {
 		return dateTime;
 	}
 
+	/**
+	 * String to SQL date.
+	 *
+	 * @param sDate the s date
+	 * @param pattern the pattern
+	 * @return the date
+	 */
+	public static java.sql.Date stringToSQLDate(String sDate) {
+		Date date = stringToDate(sDate);
+		return new java.sql.Date(date.getTime());
+	}
+
 }

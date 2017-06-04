@@ -3,17 +3,12 @@
  */
 package com.dev.hospital.management.bean;
 
-import java.util.Date;
-
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import java.sql.Date;
 
 /**
  * @author dayanlazare
  *
  */
-@Entity
-@Table(name = "Patient")
 public class Patient extends Person {
 	
 	private InsuranceType insuranceType;
@@ -21,10 +16,11 @@ public class Patient extends Person {
 	public Patient(
 			String firstname, 
 			String lastname, 
+			String email, 
 			Date dateOfBirth, 
 			InsuranceType insuranceType) {
 		
-		super(firstname, lastname, dateOfBirth);
+		super(firstname, lastname, email, dateOfBirth);
 		this.insuranceType = insuranceType;
 	}
 
@@ -34,6 +30,13 @@ public class Patient extends Person {
 
 	public void setInsuranceType(InsuranceType insuranceType) {
 		this.insuranceType = insuranceType;
+	}
+
+	@Override
+	public String toString() {
+		return "Patient [insuranceType=" + insuranceType + ", personId=" + personId + ", firstname=" + firstname
+				+ ", lastname=" + lastname + ", dateOfBirth=" + dateOfBirth + ", email=" + email + ", mobileNumber="
+				+ mobileNumber + "]";
 	}
 	
 }

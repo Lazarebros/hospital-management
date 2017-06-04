@@ -7,17 +7,11 @@ package com.dev.hospital.management.bean;
 public enum InsuranceType {
 
 	None("None"),
-
 	Aetna("Aetna"),
-
 	Axa("Axa"),
-
 	Allstate("Allstate"),
-
 	AmericanFamilyInsurance("AmericanFamilyInsurance"),
-
 	BankersLifeInsurance("BankersLifeInsurance"),
-
 	Conseco("Conseco");
 
 	private String value;

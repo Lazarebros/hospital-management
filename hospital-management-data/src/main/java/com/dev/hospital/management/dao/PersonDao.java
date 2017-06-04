@@ -5,6 +5,8 @@ package com.dev.hospital.management.dao;
 
 import java.util.List;
 
+import com.dev.hospital.management.bean.Doctor;
+import com.dev.hospital.management.bean.Patient;
 import com.dev.hospital.management.bean.Person;
 
 /**
@@ -13,7 +15,9 @@ import com.dev.hospital.management.bean.Person;
  */
 public interface PersonDao {
 	
-	public void save(Person person);
+	public void saveDoctor(Doctor doctor);
+	
+	public void savePatient(Patient patient);
 	
 	public List<Person> getDoctors();
 	
