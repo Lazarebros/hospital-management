@@ -1,15 +1,15 @@
 /**
  * 
  */
-package com.dev.hospital.management.utils;
+package com.dev.hospital.management.data.utils;
 
 import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.dev.hospital.management.bean.Doctor;
-import com.dev.hospital.management.bean.InsuranceType;
-import com.dev.hospital.management.bean.Patient;
+import com.dev.hospital.management.data.bean.Doctor;
+import com.dev.hospital.management.data.bean.InsuranceType;
+import com.dev.hospital.management.data.bean.Patient;
 
 /**
  * @author dayanlazare

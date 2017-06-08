@@ -1,4 +1,4 @@
-package com.dev.hospital.management.utils;
+package com.dev.hospital.management.data.utils;
 
 import java.util.Date;
 

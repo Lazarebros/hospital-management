@@ -1,4 +1,4 @@
-package com.dev.hospital.management.bean;
+package com.dev.hospital.management.data.bean;
 
 public enum Specialty {
 

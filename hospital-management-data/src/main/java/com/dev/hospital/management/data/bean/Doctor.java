@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.dev.hospital.management.bean;
+package com.dev.hospital.management.data.bean;
 
 import java.sql.Date;
 import java.util.HashSet;

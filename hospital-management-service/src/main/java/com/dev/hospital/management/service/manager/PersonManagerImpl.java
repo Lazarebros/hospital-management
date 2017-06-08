@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.dev.hospital.management.bean.Doctor;
-import com.dev.hospital.management.bean.Patient;
-import com.dev.hospital.management.bean.Person;
-import com.dev.hospital.management.dao.PersonDao;
+import com.dev.hospital.management.data.bean.Doctor;
+import com.dev.hospital.management.data.bean.Patient;
+import com.dev.hospital.management.data.bean.Person;
+import com.dev.hospital.management.data.dao.PersonDao;
 
 /**
  * @author dayanlazare

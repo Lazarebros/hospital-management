@@ -1,13 +1,13 @@
 /**
  * 
  */
-package com.dev.hospital.management.dao;
+package com.dev.hospital.management.data.dao;
 
 import java.util.List;
 
-import com.dev.hospital.management.bean.Doctor;
-import com.dev.hospital.management.bean.Patient;
-import com.dev.hospital.management.bean.Person;
+import com.dev.hospital.management.data.bean.Doctor;
+import com.dev.hospital.management.data.bean.Patient;
+import com.dev.hospital.management.data.bean.Person;
 
 /**
  * @author dayanlazare

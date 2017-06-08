@@ -5,7 +5,7 @@ package com.dev.hospital.management.service.manager;
 
 import java.util.List;
 
-import com.dev.hospital.management.bean.Person;
+import com.dev.hospital.management.data.bean.Person;
 
 /**
  * @author dayanlazare
