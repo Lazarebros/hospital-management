@@ -247,7 +247,7 @@ public class PersonDaoImpl implements PersonDao {
 		impl.savePatient(patient);
 		List<Person> personList = impl.getDoctors();
 		
-		for (Iterator iterator = personList.iterator(); iterator.hasNext();) {
+		for (Iterator<Person> iterator = personList.iterator(); iterator.hasNext();) {
 			Person person = (Person) iterator.next();
 			System.out.println(person);
 		}

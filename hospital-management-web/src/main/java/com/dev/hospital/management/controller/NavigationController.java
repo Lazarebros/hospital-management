@@ -9,10 +9,13 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 
+import org.springframework.stereotype.Component;
+
 /**
  * @author dayanlazare
  *
  */
+@Component
 @ManagedBean(name = "navigationController", eager = true)
 @RequestScoped
 public class NavigationController implements Serializable {
