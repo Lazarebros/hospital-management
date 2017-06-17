@@ -34,7 +34,7 @@ public class Patient extends Person {
 
 	@Override
 	public String toString() {
-		return "Patient [insuranceType=" + insuranceType + ", personId=" + personId + ", firstname=" + firstname
+		return "Patient [insuranceType=" + insuranceType + ", id=" + id + ", firstname=" + firstname
 				+ ", lastname=" + lastname + ", dateOfBirth=" + dateOfBirth + ", email=" + email + ", mobileNumber="
 				+ mobileNumber + "]";
 	}

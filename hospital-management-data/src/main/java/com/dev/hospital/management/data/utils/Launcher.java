@@ -5,11 +5,16 @@ package com.dev.hospital.management.data.utils;
 
 import java.sql.Date;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import com.dev.hospital.management.data.bean.Doctor;
 import com.dev.hospital.management.data.bean.InsuranceType;
 import com.dev.hospital.management.data.bean.Patient;
+import com.dev.hospital.management.data.bean.User;
+import com.dev.hospital.management.data.dao.PersonDaoImpl;
+import com.dev.hospital.management.data.dao.UserDaoImpl;
 
 /**
  * @author dayanlazare
@@ -45,7 +50,7 @@ public class Launcher {
 //		return amoutPernight * patient.getNumberOfNights();
 	}
 	
-	public static void main(String[] args) {
+	public static void main1(String[] args) {
 		Date dateOfBirth = DateUtil.stringToSQLDate("2012-12-23");
 //		Date now = new Date(System.currentTimeMillis());
 //		int numberOfNights = 5;
@@ -54,6 +59,31 @@ public class Launcher {
 		Double bill = getBill(p1);
 		
 		System.out.println("The bill is: " + bill);
+	}
+
+	public static void main2(String[] args) {
+		PersonDaoImpl impl = new PersonDaoImpl();
+		Doctor doctor = Launcher.createDoctor();
+		Patient patient = Launcher.createPatient();
+
+		impl.saveDoctor(doctor);
+		impl.savePatient(patient);
+		List<Doctor> personList = impl.getDoctors();
+		
+		for (Iterator<Doctor> iterator = personList.iterator(); iterator.hasNext();) {
+			Doctor person = iterator.next();
+			System.out.println(person);
+		}
+	}
+
+	public static void main(String[] args) {
+		UserDaoImpl impl = new UserDaoImpl();
+		
+		User user = impl.getUser("dlazare", "dlazare");
+		
+		if (user != null) {
+			System.out.println(user);
+		}
 		
 	}
 

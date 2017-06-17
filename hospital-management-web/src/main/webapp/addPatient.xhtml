@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html">
+    <h:body>
+        <h2>Add a new patient</h2>
+        <h:form>
+        	Firstname : <h:inputText value="#{patientBean.firstname}" /><br/>
+			Lastname : <h:inputText value="#{patientBean.lastname}" /><br/>
+			Date Of Birth : <h:inputText value="#{patientBean.dateOfBirth}" /><br/>
+			Email : <h:inputText value="#{patientBean.email}" /><br/>
+			Mobile Number : <h:inputText value="#{patientBean.mobileNumber}" /><br/>
+			Insurance Type : <h:inputText value="#{patientBean.insuranceType}" /><br/>
+			
+           <h:commandButton value="Add" action="#{patientController.add}"/>
+        </h:form>
+        <h3><font color="red">#{patientController.msg}</font></h3>
+    </h:body>
+</html>

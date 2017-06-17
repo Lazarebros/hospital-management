@@ -26,11 +26,11 @@ public class PersonManagerImpl implements PersonManager {
 		}
 	}
 
-	public List<Person> getDoctors() {
+	public List<Doctor> getDoctors() {
 		return personDao.getDoctors();
 	}
 
-	public List<Person> getPatients() {
+	public List<Patient> getPatients() {
 		return personDao.getPatients();
 	}
 

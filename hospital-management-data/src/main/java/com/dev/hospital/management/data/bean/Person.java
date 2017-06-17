@@ -11,7 +11,7 @@ import java.sql.Date;
  */
 public abstract class Person {
 	
-	protected Long personId;
+	protected Long id;
 	
 	protected String firstname;
 	protected String lastname;
@@ -31,12 +31,12 @@ public abstract class Person {
 		this.dateOfBirth = dateOfBirth;
 	}
 
-	public Long getPersonId() {
-		return personId;
+	public Long getId() {
+		return id;
 	}
 
-	public void setPersonId(Long personId) {
-		this.personId = personId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getFirstname() {

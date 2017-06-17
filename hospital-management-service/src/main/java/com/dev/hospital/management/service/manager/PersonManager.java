@@ -5,6 +5,8 @@ package com.dev.hospital.management.service.manager;
 
 import java.util.List;
 
+import com.dev.hospital.management.data.bean.Doctor;
+import com.dev.hospital.management.data.bean.Patient;
 import com.dev.hospital.management.data.bean.Person;
 
 /**
@@ -15,9 +17,9 @@ public interface PersonManager {
 
 	public void savePerson(Person person);
 
-	public List<Person> getDoctors();
+	public List<Doctor> getDoctors();
 
-	public List<Person> getPatients();
+	public List<Patient> getPatients();
 
 	public Person getDoctor(Long id);
 

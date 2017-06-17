@@ -14,8 +14,8 @@ import com.dev.hospital.management.data.bean.Patient;
  * @author dayanlazare
  *
  */
-@ManagedBean(name = "patientBean", eager = true)
-public class PatientBean {
+@ManagedBean(name = "loginBean", eager = true)
+public class LoginBean {
 
 	private String username;
 
@@ -36,6 +36,12 @@ public class PatientBean {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+
+	
+	
+	
+	
 	
 	protected String firstname;
 	protected String lastname;

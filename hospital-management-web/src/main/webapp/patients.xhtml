@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html">
+ 
+    <h:body>
+        <h3>Hello #{patientBean.username} !</h3>
+        
+        <h1>USER LIST</h1>
+        
+        <h:dataTable value="#{patientBean.patients}" var="patient" styleClass="patientTable" headerClass="patientTableHeader" rowClasses="patientTableOddRow,patientTableEvenRow"> 
+        	<h:column>
+		      	<f:facet name="header">firstname</f:facet>
+		      	#{patient.firstname}
+		   	</h:column>
+			<h:column>
+				<f:facet name="header">lastname</f:facet> 
+				#{patient.lastname}
+		   	</h:column>
+		   	<h:column>
+		      	<f:facet name="header">email</f:facet>
+		      	#{patient.email}
+		   	</h:column>
+		</h:dataTable>
+        
+    </h:body>
+ 
+</html>

@@ -1,21 +1,32 @@
-CREATE TABLE IF NOT EXISTS doctor (
-	personId int(20) NOT NULL AUTO_INCREMENT,
- 	firstname varchar(32) NOT NULL,
- 	lastname varchar(32) NOT NULL,
- 	dateOfBirth timestamp NOT NULL,
- 	email varchar(32) DEFAULT NULL,
- 	mobileNumber varchar(10) DEFAULT NULL,
- 	pagerNumber varchar(256) DEFAULT NULL,
- 	PRIMARY KEY (personId)
-);
+CREATE TABLE `doctor` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `firstname` varchar(32) NOT NULL,
+  `lastname` varchar(32) NOT NULL,
+  `date_of_birth` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `email` varchar(32) NOT NULL,
+  `mobile_number` varchar(10) DEFAULT NULL,
+  `pager_number` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
-CREATE TABLE IF NOT EXISTS patient (
-	personId int(20) NOT NULL AUTO_INCREMENT,
- 	firstname varchar(32) NOT NULL,
- 	lastname varchar(32) NOT NULL,
- 	dateOfBirth timestamp NOT NULL,
- 	email varchar(32) DEFAULT NULL,
- 	mobileNumber varchar(10) DEFAULT NULL,
- 	insuranceType varchar(32) NOT NULL,
- 	PRIMARY KEY (personId)
-);
+CREATE TABLE `patient` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `firstname` varchar(32) NOT NULL,
+  `lastname` varchar(32) NOT NULL,
+  `date_of_birth` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `email` varchar(32) NOT NULL,
+  `mobile_number` varchar(10) DEFAULT NULL,
+  `insurance_type` varchar(32) NOT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+CREATE TABLE `user` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `username` varchar(10) NOT NULL,
+  `password` varchar(32) NOT NULL,
+  `firstname` varchar(32) NOT NULL,
+  `lastname` varchar(32) NOT NULL,
+  `date_of_birth` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `email` varchar(32) NOT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
