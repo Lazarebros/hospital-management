@@ -3,7 +3,7 @@
  */
 package com.dev.hospital.management.data.bean;
 
-import java.sql.Date;
+import java.util.Date;
 
 /**
  * @author dayanlazare
@@ -18,6 +18,9 @@ public abstract class Person {
 	protected Date dateOfBirth;
 	protected String email;
 	protected String mobileNumber;
+	
+	public Person() {
+	}
 	
 	public Person(
 			String firstname, 

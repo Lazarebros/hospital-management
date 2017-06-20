@@ -1,8 +1,10 @@
 package com.dev.hospital.management.controller;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 import com.dev.hospital.management.data.bean.User;
 import com.dev.hospital.management.data.dao.UserDao;
@@ -19,18 +21,8 @@ public class LoginController {
 
 	UserDao dao = new UserDaoImpl();
 
-	private String msg;
-
 	@ManagedProperty(value = "#{loginBean}")
 	private LoginBean loginBean;
-
-	public String getMsg() {
-		return msg;
-	}
-
-	public void setMsg(String msg) {
-		this.msg = msg;
-	}
 
 	public void setLoginBean(LoginBean loginBean) {
 		this.loginBean = loginBean;
@@ -40,8 +32,10 @@ public class LoginController {
 		User user = dao.getUser(loginBean.getUsername(), loginBean.getPassword());
 		if (user != null) {
 			return "welcome";
+		} else {
+			String msg = "Username or password is incorrect!";
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(msg));
+			return null;
 		}
-		msg = "Bad credentials!!";
-		return null;
 	}
 }

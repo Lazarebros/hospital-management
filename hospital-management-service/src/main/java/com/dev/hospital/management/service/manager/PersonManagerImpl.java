@@ -2,12 +2,10 @@ package com.dev.hospital.management.service.manager;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.dev.hospital.management.data.bean.Doctor;
 import com.dev.hospital.management.data.bean.Patient;
-import com.dev.hospital.management.data.bean.Person;
 import com.dev.hospital.management.data.dao.PersonDao;
+import com.dev.hospital.management.data.dao.PersonDaoImpl;
 
 /**
  * @author dayanlazare
@@ -15,30 +13,35 @@ import com.dev.hospital.management.data.dao.PersonDao;
  */
 public class PersonManagerImpl implements PersonManager {
 	
-	@Autowired
-	public PersonDao personDao;
+	PersonDao personDao = new PersonDaoImpl();
 
-	public void savePerson(Person person) {
-		if(person instanceof Doctor) {
-			personDao.saveDoctor((Doctor) person);
-		} else {
-			personDao.savePatient((Patient) person);
-		}
+	@Override
+	public void saveDoctor(Doctor doctor) {
+		personDao.saveDoctor(doctor);
 	}
 
+	@Override
+	public void savePatient(Patient patient) {
+		personDao.savePatient(patient);
+	}
+
+	@Override
 	public List<Doctor> getDoctors() {
 		return personDao.getDoctors();
 	}
 
+	@Override
 	public List<Patient> getPatients() {
 		return personDao.getPatients();
 	}
 
-	public Person getDoctor(Long id) {
+	@Override
+	public Doctor getDoctor(Long id) {
 		return personDao.getDoctor(id);
 	}
 
-	public Person getPatient(Long id) {
+	@Override
+	public Patient getPatient(Long id) {
 		return personDao.getPatient(id);
 	}
 

@@ -20,6 +20,14 @@ public enum InsuranceType {
 		this.value = value;
 	}
 
+	public String getValue() {
+		return value;
+	}
+
+	public void setValue(String value) {
+		this.value = value;
+	}
+
 	public static InsuranceType fromValue(String value) {
 		InsuranceType result = None;
 		for (InsuranceType unit : InsuranceType.values()) {
@@ -29,4 +37,5 @@ public enum InsuranceType {
 		}
 		return result;
 	}
+
 }

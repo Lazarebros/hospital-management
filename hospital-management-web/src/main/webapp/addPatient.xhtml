@@ -1,19 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html">
-    <h:body>
-        <h2>Add a new patient</h2>
-        <h:form>
-        	Firstname : <h:inputText value="#{patientBean.firstname}" /><br/>
-			Lastname : <h:inputText value="#{patientBean.lastname}" /><br/>
-			Date Of Birth : <h:inputText value="#{patientBean.dateOfBirth}" /><br/>
-			Email : <h:inputText value="#{patientBean.email}" /><br/>
-			Mobile Number : <h:inputText value="#{patientBean.mobileNumber}" /><br/>
-			Insurance Type : <h:inputText value="#{patientBean.insuranceType}" /><br/>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html">
+<h:body>
+	<h2>Add a new patient</h2>
+	<h:form>
+		<h:panelGrid columns="3">
+			<h:outputText value="Firstname" />
+			<h:inputText id="firstname" value="#{patientBean.newPatient.firstname}" required="true" requiredMessage="Please enter firstname" />
+			<h:message for="firstname" errorClass="errorMessage" style="color:red" />
 			
-           <h:commandButton value="Add" action="#{patientController.add}"/>
-        </h:form>
-        <h3><font color="red">#{patientController.msg}</font></h3>
-    </h:body>
+			<h:outputText value="Lastname" />
+			<h:inputText id="lastname" value="#{patientBean.newPatient.lastname}" required="true" requiredMessage="Please enter lastname" />
+			<h:message for="lastname" errorClass="errorMessage" style="color:red" />
+			
+			<h:outputText value="Email" />
+			<h:inputText id="email" value="#{patientBean.newPatient.email}" required="true" requiredMessage="Please enter email" />
+			<h:message for="email" errorClass="errorMessage" style="color:red" />
+			
+			<h:outputText value="Date of birth" />
+			<h:inputText id="dateOfBirth" value="#{patientBean.newPatient.dateOfBirth}" required="true" requiredMessage="Please enter Date of birth">
+				<f:convertDateTime pattern="yyyy/dd/MM" />
+		  	</h:inputText>
+			<h:message for="dateOfBirth" errorClass="errorMessage" style="color:red" />
+			
+			<h:outputText value="Mobile Number" />
+			<h:inputText id="mobileNumber" value="#{patientBean.newPatient.mobileNumber}" required="true" requiredMessage="Please enter mobileNumber" />
+			<h:message for="mobileNumber" errorClass="errorMessage" style="color:red" />
+			
+			<h:outputText value="Insurance Type" />
+			<h:selectOneMenu id="insuranceType" value="#{patientBean.newPatient.insuranceType}">
+				<f:selectItems value="#{patientBean.insuranceTypeValues}" var="insuranceType" itemValue="#{insuranceType}" itemLabel="#{insuranceType.value}"/>
+			</h:selectOneMenu>
+			<br/>
+			<br/>
+			<h:commandButton value="Add" action="#{patientController.addNewPatient}" />
+		</h:panelGrid>
+		<h:messages styleClass="errorMessage" globalOnly="true" />
+	</h:form>
+</h:body>
 </html>

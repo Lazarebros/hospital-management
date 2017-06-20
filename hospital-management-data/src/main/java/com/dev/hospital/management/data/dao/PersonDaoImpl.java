@@ -1,7 +1,7 @@
 package com.dev.hospital.management.data.dao;
 
 import java.sql.Connection;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ public class PersonDaoImpl implements PersonDao {
 
 			pstmt.setString(1, doctor.getFirstname());
 			pstmt.setString(2, doctor.getLastname());
-			pstmt.setDate(3, doctor.getDateOfBirth());
+			pstmt.setDate(3, new java.sql.Date(doctor.getDateOfBirth().getTime()));
 			pstmt.setString(4, doctor.getEmail());
 			pstmt.setString(5, doctor.getMobileNumber());
 			pstmt.setString(6, doctor.getPagerNumber());
@@ -46,7 +46,7 @@ public class PersonDaoImpl implements PersonDao {
 
 			pstmt.setString(1, patient.getFirstname());
 			pstmt.setString(2, patient.getLastname());
-			pstmt.setDate(3, patient.getDateOfBirth());
+			pstmt.setDate(3, new java.sql.Date(patient.getDateOfBirth().getTime()));
 			pstmt.setString(4, patient.getEmail());
 			pstmt.setString(5, patient.getMobileNumber());
 			pstmt.setString(6, patient.getInsuranceType().name());

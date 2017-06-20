@@ -3,16 +3,17 @@ package com.dev.hospital.management.controller;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 import com.dev.hospital.management.data.bean.Patient;
-import com.dev.hospital.management.data.bean.User;
-import com.dev.hospital.management.data.dao.PersonDao;
-import com.dev.hospital.management.data.dao.PersonDaoImpl;
-import com.dev.hospital.management.data.dao.UserDao;
-import com.dev.hospital.management.data.dao.UserDaoImpl;
+import com.dev.hospital.management.service.manager.PersonManager;
+import com.dev.hospital.management.service.manager.PersonManagerImpl;
+import com.dev.hospital.management.service.manager.UserManager;
+import com.dev.hospital.management.service.manager.UserManagerImpl;
 import com.dev.hospital.management.ui.bean.LoginBean;
 import com.dev.hospital.management.ui.bean.PatientBean;
 
@@ -24,25 +25,16 @@ import com.dev.hospital.management.ui.bean.PatientBean;
 @RequestScoped
 public class PatientController {
 
-	UserDao userDAO = new UserDaoImpl();
+	UserManager userManager = new UserManagerImpl();
 
-	PersonDao personDAO = new PersonDaoImpl();
+	PersonManager personManager = new PersonManagerImpl();
 
-	private String msg;
 
 	@ManagedProperty(value = "#{loginBean}")
 	private LoginBean loginBean;
 
 	@ManagedProperty(value = "#{patientBean}")
 	private PatientBean patientBean;
-
-	public String getMsg() {
-		return msg;
-	}
-
-	public void setMsg(String msg) {
-		this.msg = msg;
-	}
 
 	public void setLoginBean(LoginBean loginBean) {
 		this.loginBean = loginBean;
@@ -54,25 +46,24 @@ public class PatientController {
 
 	public String showPatients() {
 		String page = null;
-		User user = userDAO.getUser(loginBean.getUsername(), loginBean.getPassword());
-		if (user != null) {
-			List<Patient> patientList = personDAO.getPatients();
-			for (Iterator<Patient> iterator = patientList.iterator(); iterator.hasNext();) {
-				Patient patient = iterator.next();
-				patientBean.addPatient(patient);
-				
-				patientBean.setFirstname(patient.getFirstname());
-				patientBean.setLastname(patient.getLastname());
-			}
-			if (!patientBean.getPatients().isEmpty()) {
-				page = "patients";
-			} else {
-				msg = "No Patients Found!!";
-				page = "welcome";
-			}
+		List<Patient> patientList = personManager.getPatients();
+		for (Iterator<Patient> iterator = patientList.iterator(); iterator.hasNext();) {
+			Patient patient = iterator.next();
+			patientBean.addPatient(patient);
+		}
+		if (!patientBean.getPatients().isEmpty()) {
+			page = "patients";
 		} else {
-			msg = "Bad credentials!!";
+			String msg = "No Patients Found!!";
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(msg));
+			page = null;
 		}
 		return page;
 	}
+
+	public String addNewPatient() {
+		personManager.savePatient(patientBean.getNewPatient());
+		return "welcome";
+	}
+
 }

@@ -6,8 +6,12 @@
  
     <h:body>
         <h3>Hello #{loginBean.username} !</h3>
-        
-        
+        <h:form>
+			<h3>Show list of patients</h3>
+			<h:commandButton action="#{patientController.showPatients}" value="Go" />
+			<h3>Add new patient</h3>
+			<h:commandButton action="addPatient?faces-redirect = true" value="Go" />
+		</h:form>
     </h:body>
  
 </html>

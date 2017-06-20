@@ -18,7 +18,7 @@
 	
 		<dependency>
 			<groupId>com.dev</groupId>
-			<artifactId>hospital-management-data</artifactId>
+			<artifactId>hospital-management-service</artifactId>
 			<version>${hospital-management-version}</version>
 		</dependency>
 		

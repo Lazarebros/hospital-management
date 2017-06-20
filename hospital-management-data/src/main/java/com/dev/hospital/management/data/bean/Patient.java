@@ -3,23 +3,27 @@
  */
 package com.dev.hospital.management.data.bean;
 
-import java.sql.Date;
+import java.util.Date;
 
 /**
  * @author dayanlazare
  *
  */
 public class Patient extends Person {
-	
+
 	private InsuranceType insuranceType;
-	
+
+	public Patient() {
+		super();
+	}
+
 	public Patient(
 			String firstname, 
 			String lastname, 
 			String email, 
 			Date dateOfBirth, 
 			InsuranceType insuranceType) {
-		
+
 		super(firstname, lastname, email, dateOfBirth);
 		this.insuranceType = insuranceType;
 	}
@@ -38,5 +42,5 @@ public class Patient extends Person {
 				+ ", lastname=" + lastname + ", dateOfBirth=" + dateOfBirth + ", email=" + email + ", mobileNumber="
 				+ mobileNumber + "]";
 	}
-	
+
 }

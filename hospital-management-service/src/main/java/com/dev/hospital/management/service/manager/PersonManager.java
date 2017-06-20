@@ -7,22 +7,23 @@ import java.util.List;
 
 import com.dev.hospital.management.data.bean.Doctor;
 import com.dev.hospital.management.data.bean.Patient;
-import com.dev.hospital.management.data.bean.Person;
 
 /**
  * @author dayanlazare
  *
  */
 public interface PersonManager {
-
-	public void savePerson(Person person);
-
+	
+	public void saveDoctor(Doctor doctor);
+	
+	public void savePatient(Patient patient);
+	
 	public List<Doctor> getDoctors();
-
+	
 	public List<Patient> getPatients();
-
-	public Person getDoctor(Long id);
-
-	public Person getPatient(Long id);
+	
+	public Doctor getDoctor(Long id);
+	
+	public Patient getPatient(Long id);
 
 }

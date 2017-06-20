@@ -7,7 +7,7 @@
         <h:form>
            Username : <h:inputText value="#{loginBean.username}" /><br/>
            Password : <h:inputSecret value="#{loginBean.password}" /><br/>
-           <h:commandButton value="Login" action="#{loginController.login}"/>
+           <h:commandButton value="Login" action="#{patientController.showPatients}"/>
         </h:form>
         <h3><font color="red">#{loginController.msg}</font></h3>
     </h:body>

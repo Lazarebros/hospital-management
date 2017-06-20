@@ -9,6 +9,10 @@
 	<application>
 		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
 	</application>
+	
+	<application>
+	 	<message-bundle>com.dev.hospital.management.message.Message</message-bundle>
+    </application>
 
 	<navigation-rule>
 		<from-view-id>home.xhtml</from-view-id>

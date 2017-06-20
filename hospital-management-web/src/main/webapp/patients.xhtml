@@ -6,7 +6,7 @@
     xmlns:h="http://java.sun.com/jsf/html">
  
     <h:body>
-        <h3>Hello #{patientBean.username} !</h3>
+        <h3>Hello #{loginBean.username} !</h3>
         
         <h1>USER LIST</h1>
         
@@ -24,7 +24,10 @@
 		      	#{patient.email}
 		   	</h:column>
 		</h:dataTable>
-        
+        <br/>
+        <h:form>
+			<h:commandButton action="welcome?faces-redirect = true" value="Back To Welcome Page" />
+		</h:form>
     </h:body>
  
 </html>

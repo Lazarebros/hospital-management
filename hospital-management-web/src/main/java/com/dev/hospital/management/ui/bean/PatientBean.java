@@ -3,11 +3,13 @@
  */
 package com.dev.hospital.management.ui.bean;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 
+import com.dev.hospital.management.data.bean.InsuranceType;
 import com.dev.hospital.management.data.bean.Patient;
 
 /**
@@ -15,47 +17,24 @@ import com.dev.hospital.management.data.bean.Patient;
  *
  */
 @ManagedBean(name = "patientBean", eager = true)
-public class PatientBean {
+public class PatientBean implements Serializable {
 
-	private String username;
+	private static final long serialVersionUID = 1L;
 
-	private String password;
+	private Patient newPatient = new Patient();
 
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	
-	protected String firstname;
-	protected String lastname;
-	
 	private List<Patient> patients = new ArrayList<Patient>();
 
-	public String getFirstname() {
-		return firstname;
+	public InsuranceType[] getInsuranceTypeValues() {
+		return InsuranceType.values();
 	}
 
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
+	public Patient getNewPatient() {
+		return newPatient;
 	}
 
-	public String getLastname() {
-		return lastname;
-	}
-
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
+	public void setNewPatient(Patient newPatient) {
+		this.newPatient = newPatient;
 	}
 
 	public List<Patient> getPatients() {
