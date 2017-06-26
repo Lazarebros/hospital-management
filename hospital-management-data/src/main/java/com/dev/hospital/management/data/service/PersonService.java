@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.dev.hospital.management.data.dao;
+package com.dev.hospital.management.data.service;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import com.dev.hospital.management.data.bean.Patient;
  * @author dayanlazare
  *
  */
-public interface PersonDao {
+public interface PersonService {
 	
 	public void saveDoctor(Doctor doctor) throws Exception;
 	

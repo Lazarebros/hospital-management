@@ -4,10 +4,11 @@
 package com.dev.hospital.management.web.ui.bean;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 import com.dev.hospital.management.data.bean.InsuranceType;
 import com.dev.hospital.management.data.bean.Patient;
@@ -16,6 +17,7 @@ import com.dev.hospital.management.data.bean.Patient;
  * @author dayanlazare
  *
  */
+@SessionScoped
 @ManagedBean(name = "patientBean", eager = true)
 public class PatientBean implements Serializable {
 
@@ -23,7 +25,7 @@ public class PatientBean implements Serializable {
 
 	private Patient newPatient = new Patient();
 
-	private List<Patient> patients = new ArrayList<Patient>();
+	private Set<Patient> patients = new HashSet<Patient>();
 
 	public InsuranceType[] getInsuranceTypeValues() {
 		return InsuranceType.values();
@@ -37,11 +39,11 @@ public class PatientBean implements Serializable {
 		this.newPatient = newPatient;
 	}
 
-	public List<Patient> getPatients() {
+	public Set<Patient> getPatients() {
 		return patients;
 	}
 
-	public void setPatients(List<Patient> patients) {
+	public void setPatients(Set<Patient> patients) {
 		this.patients = patients;
 	}
 

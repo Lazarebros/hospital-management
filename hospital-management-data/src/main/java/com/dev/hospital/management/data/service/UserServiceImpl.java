@@ -17,20 +17,20 @@ public class UserServiceImpl implements UserService {
 
 	@Transactional
 	@Override
-	public Boolean validateUser(String username, String password) {
+	public Boolean validateUser(String username, String password) throws Exception {
 		User user = userDao.getUser(username, password);
 		return user != null;
 	}
 
 	@Transactional
 	@Override
-	public void add(User user) {
+	public void add(User user) throws Exception {
 		userDao.add(user);
 	}
 
 	@Transactional(readOnly = true)
 	@Override
-	public List<User> listUsers() {
+	public List<User> listUsers() throws Exception {
 		return userDao.listUsers();
 	}
 

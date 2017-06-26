@@ -3,16 +3,15 @@ package com.dev.hospital.management.web.controller;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
-import com.dev.hospital.management.data.bean.Patient;
+import com.dev.hospital.management.data.bean.Doctor;
 import com.dev.hospital.management.data.service.PersonService;
-import com.dev.hospital.management.web.ui.bean.PatientBean;
+import com.dev.hospital.management.web.ui.bean.DoctorBean;
 
 /**
  * @author dayanlazare
@@ -20,36 +19,31 @@ import com.dev.hospital.management.web.ui.bean.PatientBean;
  */
 @ManagedBean
 @RequestScoped
-public class PatientController {
+public class DoctorController {
 
 	@ManagedProperty(value = "#{personService}")
 	PersonService personService;
 
-	@ManagedProperty(value = "#{patientBean}")
-	private PatientBean patientBean;
-	
+	@ManagedProperty(value = "#{doctorBean}")
+	private DoctorBean doctorBean;
+
 	public void setPersonService(PersonService personService) {
 		this.personService = personService;
 	}
 
-	public void setPatientBean(PatientBean patientBean) {
-		this.patientBean = patientBean;
-	}
-	
-	@PostConstruct
-	public void init() {
+	public void setDoctorBean(DoctorBean doctorBean) {
+		this.doctorBean = doctorBean;
 	}
 
-	public String showPatients() {
+	public String showDoctors() {
 		String page = null;
 		String message = null;
 		try {
-			this.retreivePatients();
-			if (!patientBean.getPatients().isEmpty()) {
-				page = "patients";
+			this.retreiveDoctors();
+			if (!doctorBean.getDoctors().isEmpty()) {
+				page = "doctors";
 			} else {
 				message = "No Patients Found!!";
-				page = null;
 			}
 		} catch (Exception e) {
 			message = "Something went wrong...";
@@ -60,12 +54,12 @@ public class PatientController {
 		return page;
 	}
 
-	public String addNewPatient() {
+	public String addNewDoctor() {
 		String page = null;
 		try {
-			personService.savePatient(patientBean.getNewPatient());
-			this.retreivePatients();
-			page = "patients";
+			personService.saveDoctor(doctorBean.getNewDoctor());
+			this.retreiveDoctors();
+			page = "doctors";
 		} catch (Exception e) {
 			String message = "Something went wrong...";
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(message));
@@ -73,11 +67,11 @@ public class PatientController {
 		return page;
 	}
 	
-	private void retreivePatients() throws Exception {
-		List<Patient> patientList = personService.getPatients();
-		for (Iterator<Patient> iterator = patientList.iterator(); iterator.hasNext();) {
-			Patient patient = iterator.next();
-			patientBean.addPatient(patient);
+	private void retreiveDoctors() throws Exception {
+		List<Doctor> doctorList = personService.getDoctors();
+		for (Iterator<Doctor> iterator = doctorList.iterator(); iterator.hasNext();) {
+			Doctor doctor = iterator.next();
+			doctorBean.addDoctor(doctor);
 		}
 	}
 

@@ -6,8 +6,6 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.dev.hospital.management.data.service.UserService;
 import com.dev.hospital.management.web.ui.bean.LoginBean;
 
@@ -19,8 +17,12 @@ import com.dev.hospital.management.web.ui.bean.LoginBean;
 @RequestScoped
 public class LoginController {
 
-	@Autowired
+	@ManagedProperty(value = "#{userService}")
 	UserService userService;
+
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
 
 	@ManagedProperty(value = "#{loginBean}")
 	private LoginBean loginBean;
@@ -30,13 +32,22 @@ public class LoginController {
 	}
 
 	public String login() {
-		Boolean valid = userService.validateUser(loginBean.getUsername(), loginBean.getPassword());
-		if (valid) {
-			return "welcome";
-		} else {
-			String msg = "Username or password is incorrect!";
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(msg));
-			return null;
+		String page = null;
+		String message = null;
+		Boolean valid = false;
+		try {
+			valid = userService.validateUser(loginBean.getUsername(), loginBean.getPassword());
+			if (valid) {
+				page = "welcome";
+			} else {
+				message = "Username or password is incorrect!";
+			}
+		} catch (Exception e) {
+			message = "Something went wrong...";
 		}
+		if(message != null) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(message));
+		}
+		return page;
 	}
 }

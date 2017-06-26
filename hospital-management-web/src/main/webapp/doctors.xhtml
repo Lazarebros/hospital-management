@@ -8,61 +8,59 @@
 <h:body>
 	<h3>Hello #{loginBean.username} !</h3>
 
-	<h1>Patients Admin Page</h1>
-
-	<h2>Add a new patient</h2>
+	<h1>Doctors Admin Page</h1>
+	
+	<h2>Add a new doctor</h2>
 	<h:form>
 		<h:panelGrid columns="3">
 			<h:outputText value="First name" />
-			<h:inputText id="firstname" value="#{patientBean.newPatient.firstname}" required="true" requiredMessage="Please enter firstname" />
+			<h:inputText id="firstname" value="#{doctorBean.newDoctor.firstname}" required="true" requiredMessage="Please enter firstname" />
 			<h:message for="firstname" errorClass="errorMessage" style="color:red" />
 			
 			<h:outputText value="Last name" />
-			<h:inputText id="lastname" value="#{patientBean.newPatient.lastname}" required="true" requiredMessage="Please enter lastname" />
+			<h:inputText id="lastname" value="#{doctorBean.newDoctor.lastname}" required="true" requiredMessage="Please enter lastname" />
 			<h:message for="lastname" errorClass="errorMessage" style="color:red" />
 			
 			<h:outputText value="Email" />
-			<h:inputText id="email" value="#{patientBean.newPatient.email}" required="true" requiredMessage="Please enter email" />
+			<h:inputText id="email" value="#{doctorBean.newDoctor.email}" required="true" requiredMessage="Please enter email" />
 			<h:message for="email" errorClass="errorMessage" style="color:red" />
 			
 			<h:outputText value="Date of birth" />
-			<h:inputText id="dateOfBirth" value="#{patientBean.newPatient.dateOfBirth}" required="true" requiredMessage="Please enter Date of birth">
+			<h:inputText id="dateOfBirth" value="#{doctorBean.newDoctor.dateOfBirth}" required="true" requiredMessage="Please enter Date of birth">
 				<f:convertDateTime pattern="yyyy/dd/MM" />
 		  	</h:inputText>
 			<h:message for="dateOfBirth" errorClass="errorMessage" style="color:red" />
 			
 			<h:outputText value="Mobile Number" />
-			<h:inputText id="mobileNumber" value="#{patientBean.newPatient.mobileNumber}" required="true" requiredMessage="Please enter mobileNumber" />
+			<h:inputText id="mobileNumber" value="#{doctorBean.newDoctor.mobileNumber}" required="true" requiredMessage="Please enter mobileNumber" />
 			<h:message for="mobileNumber" errorClass="errorMessage" style="color:red" />
 			
-			<h:outputText value="Insurance Type" />
-			<h:selectOneMenu id="insuranceType" value="#{patientBean.newPatient.insuranceType}">
-				<f:selectItems value="#{patientBean.insuranceTypeValues}" var="insuranceType" itemValue="#{insuranceType}" itemLabel="#{insuranceType.value}"/>
-			</h:selectOneMenu>
 			<br/>
 			<br/>
-			<h:commandButton value="Add" action="#{patientController.addNewPatient}" />
+			<h:commandButton value="Add" action="#{doctorController.addNewDoctor}" />
 		</h:panelGrid>
 		<h:messages styleClass="errorMessage"  style="color:red" globalOnly="true" />
 	</h:form>
 
-	<h:dataTable value="#{patientBean.patients}" var="patient" styleClass="patientTable" headerClass="patientTableHeader" rowClasses="patientTableOddRow,patientTableEvenRow">
+
+	<h:dataTable value="#{doctorBean.doctors}" var="doctor" styleClass="doctorTable" headerClass="doctorTableHeader" rowClasses="doctorTableOddRow,doctorTableEvenRow">
 		<h:column>
 			<f:facet name="header">firstname</f:facet>
-		      	#{patient.firstname}
+		      	#{doctor.firstname}
 		   	</h:column>
 		<h:column>
 			<f:facet name="header">lastname</f:facet> 
-				#{patient.lastname}
+				#{doctor.lastname}
 		   	</h:column>
 		<h:column>
 			<f:facet name="header">email</f:facet>
-		      	#{patient.email}
+		      	#{doctor.email}
 		   	</h:column>
 	</h:dataTable>
 	<br />
 	<h:form>
-		<h:commandButton action="welcome?faces-redirect = true" value="Back To Welcome Page" />
+		<h:commandButton action="welcome?faces-redirect = true"
+			value="Back To Welcome Page" />
 	</h:form>
 </h:body>
 

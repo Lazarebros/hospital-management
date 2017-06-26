@@ -7,10 +7,16 @@
     <h:body>
         <h3>Hello #{loginBean.username} !</h3>
         <h:form>
-			<h3>Show list of patients</h3>
+			<h3>Patients Page</h3>
 			<h:commandButton action="#{patientController.showPatients}" value="Go" />
-			<h3>Add new patient</h3>
-			<h:commandButton action="addPatient?faces-redirect = true" value="Go" />
+<!-- 			<h3>Add new patient</h3> -->
+<!-- 			<h:commandButton action="addPatient?faces-redirect = true" value="Go" /> -->
+			<br/>
+			
+			<h3>Doctors Page</h3>
+			<h:commandButton action="#{doctorController.showDoctors}" value="Go" />
+<!-- 			<h3>Add new doctor</h3> -->
+<!-- 			<h:commandButton action="addDoctor?faces-redirect = true" value="Go" /> -->
 		</h:form>
     </h:body>
  

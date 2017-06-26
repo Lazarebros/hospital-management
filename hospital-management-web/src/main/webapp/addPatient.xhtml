@@ -38,7 +38,10 @@
 			<br/>
 			<h:commandButton value="Add" action="#{patientController.addNewPatient}" />
 		</h:panelGrid>
-		<h:messages styleClass="errorMessage" globalOnly="true" />
+		<h:messages styleClass="errorMessage" globalOnly="true" style="alingn-right" />
+	</h:form>
+	<h:form>
+		<h:commandButton action="welcome?faces-redirect = true" value="Cancel" />
 	</h:form>
 </h:body>
 </html>

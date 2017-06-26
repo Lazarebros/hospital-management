@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html">
-    <h:body>
-        <h2>Login form</h2>
-        <h:form>
-           Username : <h:inputText value="#{loginBean.username}" /><br/>
-           Password : <h:inputSecret value="#{loginBean.password}" /><br/>
-           <h:commandButton value="Login" action="#{patientController.showPatients}"/>
-        </h:form>
-        <h3><font color="red">#{loginController.msg}</font></h3>
-    </h:body>
+<h:body>
+	<h2>Login form</h2>
+	<h:form>
+		<h:panelGrid columns="3">
+			<h:outputText value="Username" />
+			<h:inputText id="username" value="#{loginBean.username}" required="true" requiredMessage="Please enter your username" />
+			<h:message for="username" errorClass="errorMessage"  style="color:red" />
+
+			<h:outputText value="Password" />
+			<h:inputSecret id="password" value="#{loginBean.password}" required="true" requiredMessage="Please enter your password" />
+			<h:message for="password" errorClass="errorMessage"  style="color:red" />
+
+			<h:commandButton value="Login" action="#{loginController.login}" />
+		</h:panelGrid>
+		<h:messages styleClass="errorMessage"  style="color:red" globalOnly="true" />
+	</h:form>
+</h:body>
 </html>

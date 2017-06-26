@@ -36,7 +36,7 @@ public class UserDaoImpl implements UserDao {
 	public User getUser(String username, String password) {
 		User user = null;
 
-		Query query = em.createQuery("Select user From user Where username = :username and password = :password");
+		Query query = em.createQuery("Select user From User user Where user.username = :username and user.password = :password");
 		query.setParameter("username", username);
 		query.setParameter("password", password);
 		query.setMaxResults(1);
