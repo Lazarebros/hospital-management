@@ -1,21 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html">
-<h:body>
-	<h2>Login form</h2>
-	<h:form>
-		<h:panelGrid columns="3">
-			<h:outputText value="Username" />
-			<h:inputText id="username" value="#{loginBean.username}" required="true" requiredMessage="Please enter your username" />
-			<h:message for="username" errorClass="errorMessage"  style="color:red" />
-
-			<h:outputText value="Password" />
-			<h:inputSecret id="password" value="#{loginBean.password}" required="true" requiredMessage="Please enter your password" />
-			<h:message for="password" errorClass="errorMessage"  style="color:red" />
-
-			<h:commandButton value="Login" action="#{loginController.login}" />
-		</h:panelGrid>
-		<h:messages styleClass="errorMessage"  style="color:red" globalOnly="true" />
-	</h:form>
-</h:body>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  
+      xmlns:h="http://java.sun.com/jsf/html"  
+      xmlns:f="http://java.sun.com/jsf/core"  
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">  
+ 
+    <ui:composition template="/templates/login/loginMain.xhtml">
+        <ui:define name="content">            
+        </ui:define>
+    </ui:composition>
+ 
 </html>

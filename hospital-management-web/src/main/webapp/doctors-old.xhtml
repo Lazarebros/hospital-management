@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+	<h3>Hello #{loginBean.username} !</h3>
+
+	<h1>Doctors Admin Page</h1>
+	
+	<h2>Add a new doctor</h2>
+	<h:form>
+		<h:panelGrid columns="3">
+			<h:outputText value="First name" />
+			<h:inputText id="firstname" value="#{doctorBean.newDoctor.firstname}" required="true" requiredMessage="Please enter firstname" />
+			<h:message for="firstname" errorClass="errorMessage" style="color:red" />
+			
+			<h:outputText value="Last name" />
+			<h:inputText id="lastname" value="#{doctorBean.newDoctor.lastname}" required="true" requiredMessage="Please enter lastname" />
+			<h:message for="lastname" errorClass="errorMessage" style="color:red" />
+			
+			<h:outputText value="Email" />
+			<h:inputText id="email" value="#{doctorBean.newDoctor.email}" required="true" requiredMessage="Please enter email" />
+			<h:message for="email" errorClass="errorMessage" style="color:red" />
+			
+			<h:outputText value="Date of birth" />
+			<h:inputText id="dateOfBirth" value="#{doctorBean.newDoctor.dateOfBirth}" required="true" requiredMessage="Please enter Date of birth">
+				<f:convertDateTime pattern="yyyy/dd/MM" />
+		  	</h:inputText>
+			<h:message for="dateOfBirth" errorClass="errorMessage" style="color:red" />
+			
+			<h:outputText value="Mobile Number" />
+			<h:inputText id="mobileNumber" value="#{doctorBean.newDoctor.mobileNumber}" required="true" requiredMessage="Please enter mobileNumber" />
+			<h:message for="mobileNumber" errorClass="errorMessage" style="color:red" />
+			
+			<br/>
+			<br/>
+			<h:commandButton value="Add" action="#{doctorController.addNewDoctor}" />
+		</h:panelGrid>
+		<h:messages styleClass="errorMessage"  style="color:red" globalOnly="true" />
+	</h:form>
+
+	<p:dataTable value="#{doctorBean.doctors}" var="doctor"  widgetVar="doctorTable" emptyMessage="No doctors found">
+		<p:column headerText="First name">
+		    <h:outputText value="#{doctor.firstname}" />
+		</p:column>
+		<p:column headerText="Last name">
+		    <h:outputText value="#{doctor.lastname}" />
+	   	</p:column>
+		<p:column headerText="Email">
+		    <h:outputText value="#{doctor.email}" />
+	   	</p:column>
+	</p:dataTable>
+	<br />
+	<h:form>
+		<h:commandButton action="welcome?faces-redirect = true"
+			value="Back To Welcome Page" />
+	</h:form>
+</h:body>
+
+</html>

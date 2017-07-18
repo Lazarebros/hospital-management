@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import com.dev.hospital.management.data.bean.Doctor;
 import com.dev.hospital.management.data.bean.User;
+import com.dev.hospital.management.data.service.PersonService;
 import com.dev.hospital.management.data.service.UserService;
 import com.dev.hospital.management.data.spring.config.PersistenceJPAConfig;
 
@@ -16,6 +18,7 @@ public class SpringHibernateMain {
 			context = new AnnotationConfigApplicationContext(PersistenceJPAConfig.class);
 
 			UserService userService = context.getBean(UserService.class);
+			PersonService personService = context.getBean(PersonService.class);
 
 			// Add Users
 //			userService.add(new User("Sunil", "Bora"));
@@ -30,6 +33,12 @@ public class SpringHibernateMain {
 				System.out.println("First Name = " + user.getUsername());
 				System.out.println("Last Name = " + user.getPassword());
 				System.out.println();
+			}
+			
+			// Get Doctors
+			List<Doctor> doctors = personService.getDoctors();
+			for (Doctor doctor : doctors) {
+				System.out.println(doctor);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

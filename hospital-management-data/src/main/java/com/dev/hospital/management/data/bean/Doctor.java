@@ -7,11 +7,16 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -23,39 +28,31 @@ import javax.persistence.Transient;
 @Table(name = "doctors")
 public class Doctor {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "doctor_id")
 	protected Long id;
 
-	@Column(name = "first_name")
 	protected String firstname;
 
-	@Column(name = "last_name")
 	protected String lastname;
 
-	@Column(name = "date_of_birth")
 	protected Date dateOfBirth;
 
-	@Column(name = "email")
 	protected String email;
 	
-	@Column(name = "mobile_number")
 	private String mobileNumber;
 	
-	@Column(name = "pager_number")
 	private String pagerNumber;
 
-	@Transient
 	private Set<String> specialties = new HashSet<String>();
 	
-	@Transient
-	private Set<Patient> Patients = new HashSet<Patient>();
+	private Set<Patient> patients = new HashSet<Patient>();
 
 	public Doctor() {
 		super();
 	}
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "doctor_id")
 	public Long getId() {
 		return id;
 	}
@@ -64,6 +61,7 @@ public class Doctor {
 		this.id = id;
 	}
 
+	@Column(name = "first_name")
 	public String getFirstname() {
 		return firstname;
 	}
@@ -72,6 +70,7 @@ public class Doctor {
 		this.firstname = firstname;
 	}
 
+	@Column(name = "last_name")
 	public String getLastname() {
 		return lastname;
 	}
@@ -80,6 +79,7 @@ public class Doctor {
 		this.lastname = lastname;
 	}
 
+	@Column(name = "date_of_birth")
 	public Date getDateOfBirth() {
 		return dateOfBirth;
 	}
@@ -88,6 +88,7 @@ public class Doctor {
 		this.dateOfBirth = dateOfBirth;
 	}
 
+	@Column(name = "email")
 	public String getEmail() {
 		return email;
 	}
@@ -96,6 +97,7 @@ public class Doctor {
 		this.email = email;
 	}
 
+	@Column(name = "mobile_number")
 	public String getMobileNumber() {
 		return mobileNumber;
 	}
@@ -104,6 +106,7 @@ public class Doctor {
 		this.mobileNumber = mobileNumber;
 	}
 
+	@Column(name = "pager_number")
 	public String getPagerNumber() {
 		return pagerNumber;
 	}
@@ -111,7 +114,8 @@ public class Doctor {
 	public void setPagerNumber(String pagerNumber) {
 		this.pagerNumber = pagerNumber;
 	}
-
+	
+	@Transient
 	public Set<String> getSpecialties() {
 		return specialties;
 	}
@@ -124,16 +128,22 @@ public class Doctor {
 		this.specialties.add(specialty);
 	}
 
+	@ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinTable(
+        name = "doctors_patients",
+        joinColumns = @JoinColumn(name = "doctor_id"),
+        inverseJoinColumns = @JoinColumn(name = "patient_id")
+    )
 	public Set<Patient> getPatients() {
-		return Patients;
+		return patients;
 	}
 
 	public void setPatients(Set<Patient> patients) {
-		Patients = patients;
+		this.patients = patients;
 	}
 
 	public void addPatient(Patient patient) {
-		this.Patients.add(patient);
+		this.patients.add(patient);
 	}
 
 	@Override

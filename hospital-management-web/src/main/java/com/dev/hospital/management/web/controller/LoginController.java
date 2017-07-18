@@ -5,9 +5,11 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 import com.dev.hospital.management.data.service.UserService;
 import com.dev.hospital.management.web.ui.bean.LoginBean;
+import com.dev.hospital.management.web.util.SessionUtils;
 
 /**
  * @author dayanlazare
@@ -50,4 +52,11 @@ public class LoginController {
 		}
 		return page;
 	}
+
+	public String logout() {
+		HttpSession session = SessionUtils.getSession();
+		session.invalidate();
+		return "login";
+	}
+
 }

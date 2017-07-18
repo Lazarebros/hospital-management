@@ -33,7 +33,7 @@ ALTER TABLE `user` ADD UNIQUE KEY `UC_Doctor` (`user_name`) USING BTREE;
 CREATE TABLE `doctors_patients` (
   `doctor_id` int(11) NOT NULL,
   `patient_id` int(11) NOT NULL,
-  PRIMARY KEY (`patient_id`,`patient_id`),
+  PRIMARY KEY (`doctor_id`,`patient_id`),
   KEY `fk_doctor` (`doctor_id`),
   KEY `fk_patient` (`patient_id`),
   CONSTRAINT `fk_doctor` FOREIGN KEY (`doctor_id`) REFERENCES `doctors` (`doctor_id`),

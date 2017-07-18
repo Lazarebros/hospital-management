@@ -4,6 +4,8 @@
 package com.dev.hospital.management.data.bean;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +14,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 /**
@@ -22,34 +25,29 @@ import javax.persistence.Table;
 @Table(name = "patients")
 public class Patient {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "patient_id")
 	protected Long id;
 
-	@Column(name = "first_name")
 	protected String firstname;
 
-	@Column(name = "last_name")
 	protected String lastname;
 
-	@Column(name = "date_of_birth")
 	protected Date dateOfBirth;
 
-	@Column(name = "email")
 	protected String email;
 
-	@Column(name = "mobile_number")
 	protected String mobileNumber;
 
-	@Enumerated(EnumType.ORDINAL)
-	@Column(name = "insurance_type")
 	private InsuranceType insuranceType;
+	
+	private Set<Doctor> doctors = new HashSet<Doctor>();
 
 	public Patient() {
 		super();
 	}
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "patient_id")
 	public Long getId() {
 		return id;
 	}
@@ -58,6 +56,7 @@ public class Patient {
 		this.id = id;
 	}
 
+	@Column(name = "first_name")
 	public String getFirstname() {
 		return firstname;
 	}
@@ -66,6 +65,7 @@ public class Patient {
 		this.firstname = firstname;
 	}
 
+	@Column(name = "last_name")
 	public String getLastname() {
 		return lastname;
 	}
@@ -74,6 +74,7 @@ public class Patient {
 		this.lastname = lastname;
 	}
 
+	@Column(name = "date_of_birth")
 	public Date getDateOfBirth() {
 		return dateOfBirth;
 	}
@@ -82,6 +83,7 @@ public class Patient {
 		this.dateOfBirth = dateOfBirth;
 	}
 
+	@Column(name = "email")
 	public String getEmail() {
 		return email;
 	}
@@ -90,6 +92,7 @@ public class Patient {
 		this.email = email;
 	}
 
+	@Column(name = "mobile_number")
 	public String getMobileNumber() {
 		return mobileNumber;
 	}
@@ -98,12 +101,23 @@ public class Patient {
 		this.mobileNumber = mobileNumber;
 	}
 
+	@Enumerated(EnumType.STRING)
+	@Column(name = "insurance_type")
 	public InsuranceType getInsuranceType() {
 		return insuranceType;
 	}
 
 	public void setInsuranceType(InsuranceType insuranceType) {
 		this.insuranceType = insuranceType;
+	}
+	
+	@ManyToMany(mappedBy = "patients")
+	public Set<Doctor> getDoctors() {
+		return doctors;
+	}
+
+	public void setDoctors(Set<Doctor> doctors) {
+		this.doctors = doctors;
 	}
 
 	@Override

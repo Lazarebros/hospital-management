@@ -1,0 +1,20 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+ 
+    <ui:composition>
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+	        <div class="navbar-header">
+	          <p class="project-name">Hospital Management</p>
+	        </div>
+            <div class="navbar-user-info">
+                <p class="user-info">Logged in: #{loginBean.username}</p>
+            </div>
+            <div class="navbar-logout">
+                <h:form>
+					<h:commandLink action="#{loginController.logout}" value="Logout"></h:commandLink>
+				</h:form>
+            </div>
+	    </nav>
+    </ui:composition>
+</html>
