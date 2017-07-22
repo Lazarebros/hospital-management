@@ -13,7 +13,7 @@ import com.dev.hospital.management.data.bean.User;
  */
 public interface UserService {
 
-	public Boolean validateUser(String username, String password) throws Exception;
+	public User validateUser(String username, String password) throws Exception;
 
 	public void add(User user) throws Exception;
 

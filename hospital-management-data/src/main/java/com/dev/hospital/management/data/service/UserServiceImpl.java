@@ -17,9 +17,8 @@ public class UserServiceImpl implements UserService {
 
 	@Transactional
 	@Override
-	public Boolean validateUser(String username, String password) throws Exception {
-		User user = userDao.getUser(username, password);
-		return user != null;
+	public User validateUser(String username, String password) throws Exception {
+		return userDao.getUser(username, password);
 	}
 
 	@Transactional

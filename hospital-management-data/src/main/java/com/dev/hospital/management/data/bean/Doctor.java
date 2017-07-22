@@ -9,7 +9,10 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +21,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 /**
  * @author dayanlazare
@@ -42,7 +44,7 @@ public class Doctor {
 	
 	private String pagerNumber;
 
-	private Set<String> specialties = new HashSet<String>();
+	private Set<Specialty> specialties = new HashSet<Specialty>();
 	
 	private Set<Patient> patients = new HashSet<Patient>();
 
@@ -115,16 +117,19 @@ public class Doctor {
 		this.pagerNumber = pagerNumber;
 	}
 	
-	@Transient
-	public Set<String> getSpecialties() {
+//	@Transient
+	@Column(name = "specialties", nullable = true, insertable = true, updatable = true)
+	@ElementCollection
+	@Enumerated(EnumType.STRING)
+	public Set<Specialty> getSpecialties() {
 		return specialties;
 	}
 
-	public void setSpecialties(Set<String> specialties) {
+	public void setSpecialties(Set<Specialty> specialties) {
 		this.specialties = specialties;
 	}
 
-	public void addSpecialty(String specialty) {
+	public void addSpecialty(Specialty specialty) {
 		this.specialties.add(specialty);
 	}
 

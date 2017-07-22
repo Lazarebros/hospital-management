@@ -14,7 +14,7 @@
 			<div class="container-main-datatable">
 	        	<h2>Registered Doctors</h2>
 	        	<br/>
-				<p:dataTable value="#{doctorBean.doctors}" var="doctor"  widgetVar="doctorTable" emptyMessage="No doctors found">
+				<p:dataTable value="#{doctorBean.doctors}" var="doctor" scrollable="true" scrollHeight="200" emptyMessage="No doctors found">
 					<p:column headerText="First name">
 					    <h:outputText value="#{doctor.firstname}" />
 					</p:column>
@@ -29,28 +29,21 @@
 			<div class="container-main-form">
 				<h2>Add a new doctor</h2>
 				<h:form>
-					<h:panelGrid columns="3">
-						<h:outputText value="First name" />
-						<h:inputText id="firstname" value="#{doctorBean.newDoctor.firstname}" required="true" requiredMessage="Please enter firstname" />
-						<h:message for="firstname" errorClass="errorMessage" style="color:red" />
+					<h:panelGrid columns="2">
+						<p:outputLabel for="firstname" value="First name" />
+						<p:inputText id="firstname" value="#{doctorBean.newDoctor.firstname}" required="true" />
 						
-						<h:outputText value="Last name" />
-						<h:inputText id="lastname" value="#{doctorBean.newDoctor.lastname}" required="true" requiredMessage="Please enter lastname" />
-						<h:message for="lastname" errorClass="errorMessage" style="color:red" />
+						<p:outputLabel for="lastname" value="Last name" />
+						<p:inputText id="lastname" value="#{doctorBean.newDoctor.lastname}" required="true" />
 						
-						<h:outputText value="Email" />
-						<h:inputText id="email" value="#{doctorBean.newDoctor.email}" required="true" requiredMessage="Please enter email" />
-						<h:message for="email" errorClass="errorMessage" style="color:red" />
+						<p:outputLabel for="email" value="Email" />
+						<p:inputText id="email" value="#{doctorBean.newDoctor.email}" required="true" />
 						
-						<h:outputText value="Date of birth" />
-						<h:inputText id="dateOfBirth" value="#{doctorBean.newDoctor.dateOfBirth}" required="true" requiredMessage="Please enter Date of birth">
-							<f:convertDateTime pattern="yyyy/dd/MM" />
-					  	</h:inputText>
-						<h:message for="dateOfBirth" errorClass="errorMessage" style="color:red" />
+						<p:outputLabel for="dateOfBirth" value="Date of birth" />
+						<p:calendar id="dateOfBirth" value="#{doctorBean.newDoctor.dateOfBirth}" required="true" pattern="yyyy/dd/MM" mask="true" mindate="1900/01/01"  widgetVar="calwidget" maxdate="calwidget.today()" />
 						
-						<h:outputText value="Mobile Number" />
-						<h:inputText id="mobileNumber" value="#{doctorBean.newDoctor.mobileNumber}" required="true" requiredMessage="Please enter mobileNumber" />
-						<h:message for="mobileNumber" errorClass="errorMessage" style="color:red" />
+						<p:outputLabel for="mobileNumber" value="Mobile Number" />
+						<p:inputText id="mobileNumber" value="#{doctorBean.newDoctor.mobileNumber}" required="true" />
 						
 						<br/>
 						<br/>

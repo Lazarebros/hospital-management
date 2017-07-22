@@ -7,14 +7,16 @@
 	        <div class="navbar-header">
 	          <p class="project-name">Hospital Management</p>
 	        </div>
-            <div class="navbar-user-info">
-                <p class="user-info">Logged in: #{loginBean.username}</p>
-            </div>
-            <div class="navbar-logout">
-                <h:form>
-					<h:commandLink action="#{loginController.logout}" value="Logout"></h:commandLink>
-				</h:form>
-            </div>
+            <div class="navbar-user-info-container">
+	            <div class="navbar-user-info">
+	                <p class="user-info">Welcome: #{loginBean.firstname} #{loginBean.lastname}</p>
+	            </div>
+	            <div class="navbar-logout">
+	                <h:form>
+						<h:commandLink action="#{loginController.logout}" value="Logout"></h:commandLink>
+					</h:form>
+	            </div>
+	    	</div>
 	    </nav>
     </ui:composition>
 </html>

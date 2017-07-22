@@ -60,6 +60,7 @@ public class DoctorController {
 			personService.saveDoctor(doctorBean.getNewDoctor());
 			this.retreiveDoctors();
 			page = "doctors";
+			doctorBean.setNewDoctor(new Doctor());
 		} catch (Exception e) {
 			String message = "Something went wrong...";
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(message));

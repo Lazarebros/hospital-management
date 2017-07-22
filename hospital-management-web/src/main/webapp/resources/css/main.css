@@ -11,19 +11,27 @@ body {
   color: #fff;
 }
 
+.navbar-user-info-container {
+	position: absolute;
+	padding-top: 18px;
+	width: 400px;
+	right: 1px;
+}
+
 .navbar-user-info {
-  position: absolute;
-  padding-top: 18px;
-  width: 200px;
-  right: 100px;
-  font-size: 14px;
-  color: #fff;
+	float: left;
+  	font-size: 14px;
+  	color: #fff;
+}
+
+.user-info {
+	float: right;
 }
 
 .navbar-logout {
-	position: absolute;
-  	padding-top: 18px;
-  	right: 40px;
+	float: right;
+	width: 60px;
+	padding-right: 10px;
   	font-size: 14px;
   	color: #fff;
 }
@@ -75,11 +83,19 @@ body {
 }
 
 .container-footer {
-  margin: auto;
+/*   margin: auto; */
 }
 
 .footer > .container-footer {
   text-align: center;
   font-size: 80%;
   color: grey;
+}
+
+.ui-selectonemenu {
+    padding-right: 0 !important;
+}
+
+.ui-selectonemenu label {
+    width: auto !important;
 }

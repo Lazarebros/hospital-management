@@ -7,6 +7,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
+import com.dev.hospital.management.data.bean.User;
 import com.dev.hospital.management.data.service.UserService;
 import com.dev.hospital.management.web.ui.bean.LoginBean;
 import com.dev.hospital.management.web.util.SessionUtils;
@@ -36,10 +37,12 @@ public class LoginController {
 	public String login() {
 		String page = null;
 		String message = null;
-		Boolean valid = false;
 		try {
-			valid = userService.validateUser(loginBean.getUsername(), loginBean.getPassword());
-			if (valid) {
+			User user = userService.validateUser(loginBean.getUsername(), loginBean.getPassword());
+			if (user != null) {
+				loginBean.setValid(true);
+				loginBean.setFirstname(user.getFirstname());
+				loginBean.setLastname(user.getLastname());
 				page = "welcome";
 			} else {
 				message = "Username or password is incorrect!";
@@ -54,6 +57,7 @@ public class LoginController {
 	}
 
 	public String logout() {
+		loginBean.setValid(false);
 		HttpSession session = SessionUtils.getSession();
 		session.invalidate();
 		return "login";

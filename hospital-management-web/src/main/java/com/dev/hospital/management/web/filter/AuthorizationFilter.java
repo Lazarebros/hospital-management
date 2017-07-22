@@ -39,11 +39,14 @@ public class AuthorizationFilter implements Filter {
 			HttpServletResponse resp = (HttpServletResponse) response;
 			HttpSession session = reqt.getSession(false);
 			
-			LoginBean loginBean = (LoginBean) session.getAttribute("loginBean");
+			LoginBean loginBean = null;
+			if (session != null) {
+				loginBean = (LoginBean) session.getAttribute("loginBean");
+			}
 
 			String reqURI = reqt.getRequestURI();
 			if (reqURI.indexOf("/login.xhtml") >= 0
-					|| (session != null && loginBean != null && loginBean.getUsername() != null)
+					|| (loginBean != null && loginBean.isValid())
 					|| reqURI.contains("javax.faces.resource")) {
 				
 				chain.doFilter(request, response);

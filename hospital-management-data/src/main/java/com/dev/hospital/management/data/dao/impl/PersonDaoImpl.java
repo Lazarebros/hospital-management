@@ -1,11 +1,13 @@
 package com.dev.hospital.management.data.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Order;
 import javax.persistence.criteria.Root;
 
 import org.springframework.stereotype.Repository;
@@ -47,7 +49,17 @@ public class PersonDaoImpl implements PersonDao {
 		CriteriaBuilder builder = em.getCriteriaBuilder();
 		CriteriaQuery<Doctor> criteria = builder.createQuery(Doctor.class);
 		Root<Doctor> doctorRoot = criteria.from(Doctor.class);
+		
 		criteria.select(doctorRoot);
+		
+		List<Order> orderList = new ArrayList<Order>();
+
+		orderList.add(builder.desc(doctorRoot.get("id")));
+//		orderList.add(builder.desc(doctorRoot.get("rating")));
+
+		criteria.orderBy(orderList);
+		
+		
 		return em.createQuery(criteria).getResultList();
 	}
 

@@ -66,6 +66,7 @@ public class PatientController {
 			personService.savePatient(patientBean.getNewPatient());
 			this.retreivePatients();
 			page = "patients";
+			patientBean.setNewPatient(new Patient());
 		} catch (Exception e) {
 			String message = "Something went wrong...";
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(message));
