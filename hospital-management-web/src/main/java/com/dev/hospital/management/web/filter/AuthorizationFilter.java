@@ -16,6 +16,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.dev.hospital.management.web.ui.bean.LoginBean;
 
 /**
@@ -24,6 +27,8 @@ import com.dev.hospital.management.web.ui.bean.LoginBean;
  */
 @WebFilter(filterName = "AuthFilter", urlPatterns = { "*.xhtml" })
 public class AuthorizationFilter implements Filter {
+	
+	protected Logger logger = LoggerFactory.getLogger(getClass());
 
 	public AuthorizationFilter() {
 	}
@@ -54,7 +59,7 @@ public class AuthorizationFilter implements Filter {
 				resp.sendRedirect(reqt.getContextPath() + "/login.xhtml");
 			}
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		}
 	}
 
