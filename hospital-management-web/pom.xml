@@ -10,6 +10,7 @@
 
 	<properties>
 		<hospital.management.version>1.0.0-SNAPSHOT</hospital.management.version>
+		<user.management.version>1.0.0-SNAPSHOT</user.management.version>
 		<jsf.version>2.2.14</jsf.version>
 		<primefaces.version>6.1</primefaces.version>
 		<spring.version>4.3.8.RELEASE</spring.version>
@@ -21,6 +22,12 @@
 			<groupId>com.dev</groupId>
 			<artifactId>hospital-management-data</artifactId>
 			<version>${hospital.management.version}</version>
+		</dependency>
+	
+		<dependency>
+			<groupId>com.d2l2c</groupId>
+  			<artifactId>user-mangement</artifactId>
+			<version>${user.management.version}</version>
 		</dependency>
 		
 		<dependency>

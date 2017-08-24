@@ -7,8 +7,8 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
-import com.dev.hospital.management.data.bean.User;
-import com.dev.hospital.management.data.service.UserService;
+import com.d2l2c.user.mangement.bean.User;
+import com.d2l2c.user.mangement.service.UserService;
 import com.dev.hospital.management.web.ui.bean.LoginBean;
 import com.dev.hospital.management.web.util.SessionUtils;
 
