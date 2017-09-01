@@ -29,6 +29,7 @@ public enum Specialty {
 		for (Specialty unit : Specialty.values()) {
 			if (unit.value.equalsIgnoreCase(value)) {
 				result = unit;
+				break;
 			}
 		}
 		return result;

@@ -9,8 +9,11 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.dev.hospital.management.data.bean.Doctor;
-import com.dev.hospital.management.data.service.PersonService;
+import com.dev.hospital.management.data.service.DoctorService;
 import com.dev.hospital.management.web.ui.bean.DoctorBean;
 
 /**
@@ -21,14 +24,16 @@ import com.dev.hospital.management.web.ui.bean.DoctorBean;
 @RequestScoped
 public class DoctorController {
 
-	@ManagedProperty(value = "#{personService}")
-	PersonService personService;
+	private static final Logger LOGGER = LoggerFactory.getLogger(DoctorController.class);
+
+	@ManagedProperty(value = "#{doctorService}")
+	DoctorService doctorService;
 
 	@ManagedProperty(value = "#{doctorBean}")
 	private DoctorBean doctorBean;
 
-	public void setPersonService(PersonService personService) {
-		this.personService = personService;
+	public void setDoctorService(DoctorService doctorService) {
+		this.doctorService = doctorService;
 	}
 
 	public void setDoctorBean(DoctorBean doctorBean) {
@@ -47,6 +52,7 @@ public class DoctorController {
 			}
 		} catch (Exception e) {
 			message = "Something went wrong...";
+			LOGGER.error(e.getMessage());
 		}
 		if(message != null) {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(message));
@@ -57,19 +63,20 @@ public class DoctorController {
 	public String addNewDoctor() {
 		String page = null;
 		try {
-			personService.saveDoctor(doctorBean.getNewDoctor());
+			doctorService.saveDoctor(doctorBean.getNewDoctor());
 			this.retreiveDoctors();
 			page = "doctors";
 			doctorBean.setNewDoctor(new Doctor());
 		} catch (Exception e) {
 			String message = "Something went wrong...";
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(message));
+			LOGGER.error(e.getMessage());
 		}
 		return page;
 	}
 	
 	private void retreiveDoctors() throws Exception {
-		List<Doctor> doctorList = personService.getDoctors();
+		List<Doctor> doctorList = doctorService.getDoctors();
 		for (Iterator<Doctor> iterator = doctorList.iterator(); iterator.hasNext();) {
 			Doctor doctor = iterator.next();
 			doctorBean.addDoctor(doctor);

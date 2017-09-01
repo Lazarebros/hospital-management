@@ -33,6 +33,7 @@ public enum InsuranceType {
 		for (InsuranceType unit : InsuranceType.values()) {
 			if (unit.value.equalsIgnoreCase(value)) {
 				result = unit;
+				break;
 			}
 		}
 		return result;

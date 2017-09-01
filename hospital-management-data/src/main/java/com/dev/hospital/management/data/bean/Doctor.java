@@ -9,7 +9,6 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -44,7 +43,7 @@ public class Doctor {
 	
 	private String pagerNumber;
 
-	private Set<Specialty> specialties = new HashSet<Specialty>();
+	private Specialty specialty;
 	
 	private Set<Patient> patients = new HashSet<Patient>();
 
@@ -117,20 +116,14 @@ public class Doctor {
 		this.pagerNumber = pagerNumber;
 	}
 	
-//	@Transient
-	@Column(name = "specialties", nullable = true, insertable = true, updatable = true)
-	@ElementCollection
 	@Enumerated(EnumType.STRING)
-	public Set<Specialty> getSpecialties() {
-		return specialties;
+	@Column(name = "specialty")
+	public Specialty getSpecialty() {
+		return specialty;
 	}
 
-	public void setSpecialties(Set<Specialty> specialties) {
-		this.specialties = specialties;
-	}
-
-	public void addSpecialty(Specialty specialty) {
-		this.specialties.add(specialty);
+	public void setSpecialty(Specialty specialty) {
+		this.specialty = specialty;
 	}
 
 	@ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)

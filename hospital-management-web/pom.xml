@@ -26,7 +26,7 @@
 	
 		<dependency>
 			<groupId>com.d2l2c</groupId>
-  			<artifactId>user-mangement</artifactId>
+  			<artifactId>user-management</artifactId>
 			<version>${user.management.version}</version>
 		</dependency>
 		
