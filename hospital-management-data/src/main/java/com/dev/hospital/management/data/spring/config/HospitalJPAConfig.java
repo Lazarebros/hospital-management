@@ -59,10 +59,10 @@ public class HospitalJPAConfig {
 	@Bean
 	public DataSource hospitalDataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName(environment.getRequiredProperty("db.driver"));
-		dataSource.setUrl(environment.getRequiredProperty("db.url"));
-		dataSource.setUsername(environment.getRequiredProperty("db.username"));
-		dataSource.setPassword(environment.getRequiredProperty("db.password"));
+		dataSource.setDriverClassName(environment.getRequiredProperty("hospital.db.driver"));
+		dataSource.setUrl(environment.getRequiredProperty("hospital.db.url"));
+		dataSource.setUsername(environment.getRequiredProperty("hospital.db.username"));
+		dataSource.setPassword(environment.getRequiredProperty("hospital.db.password"));
 		return dataSource;
 	}
 
