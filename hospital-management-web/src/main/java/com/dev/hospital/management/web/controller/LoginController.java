@@ -46,8 +46,8 @@ public class LoginController {
 			User user = userService.validateUser(loginBean.getUsername(), loginBean.getPassword());
 			if (user != null) {
 				loginBean.setValid(true);
-				loginBean.setFirstname(user.getFirstname());
-				loginBean.setLastname(user.getLastname());
+				loginBean.setFirstname(user.getFirstName());
+				loginBean.setLastname(user.getLastName());
 				page = "welcome";
 			} else {
 				message = "Username or password is incorrect!";
